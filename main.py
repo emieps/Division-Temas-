@@ -6,34 +6,70 @@ def read_fie(path):
         f.close()
         return lines
 
-def randomizer(lst):
-    random.shuffle(lst)
-
 def div_numbers(lst, num):
     return len(lst) // num  
 
 def rem_numbers(lst, num):
     return len(lst) % num  
 
-def distribution(std, theme):
-    std_div = div_numbers(std)
-    std_rem = rem_numbers(std)
-    theme_div = div_numbers(theme)
-    theme_rem = rem_numbers(theme)
+def distribution(std, theme, n):
+    std_div = div_numbers(std, n)
+    std_rem = rem_numbers(std, n)
+    theme_div = div_numbers(theme, n)
+    theme_rem = rem_numbers(theme, n)
+
+    cont = []
+
+    #dividir temas 
+    for i in range(n):
+        for j in range(theme_div):
+            temp = []
+            choice = random.choice(theme)
+            theme.remove(choice)
+            temp.append(choice)
+            j +=1  
+        cont.append([temp])
+
+    for i in cont:
+        print(i)
+    print("==============================================================")
+    '''
+    if theme_rem != 1: 
+        l = list(range(0,n))
+        random.shuffle(l)
+        for i in range(theme_rem):
+            choice = random.choice(theme)
+            theme.remove(choice)
+            num = l.pop()
+            cont[num].append(choice)
+    '''
+    #dividir estudiantes 
+    for i in range(n):
+        for j in range(std_div):
+            temp = []
+            choice = random.choice(std)
+            std.remove(choice)
+            temp.append(choice)
+            j +=1  
+        cont[i].append([temp])
     
+    for i in cont:
+        print(i)
+    print("==============================================================")
+
 
 if __name__ == '__main__':
     while True:
         #poner try por si ponene un coso que no va y tambien si no ponene y poner un try si no exsite documento 
         group_number = int(input("Cantidad de grupos: ")) #Pedir cantidad de grupos
+
         std_path = input("Inserte archivos de estudiantes: ") #Pedir path de archivo de estudiantes
         std_list = read_fie(std_path) #Lista estudiantes 
-        std_nums = len(std_list) #Numeros de estudiantes 
+
         themes_path = input("Inserte archivos de estudiantes: ") #Pedir path de archivo de temas   
         themes_list = read_fie(themes_path) #Lista temas
-        themes_nums = len(themes_list) #Numeros de estudiantes 
 
-        if group_number <= std_nums and themes_nums >= group_number : #Si entradas no cuimplen con requerimientos 
+        if group_number <= len(std_list) and len(themes_list) >= group_number : #Si entradas no cuimplen con requerimientos 
             break
         else: 
             print("Parametro no valido")
@@ -42,16 +78,10 @@ if __name__ == '__main__':
                 exit()
 
     #C:\Users\Emily\Desktop\Prueba\pub.txt
-    #Poner en aleatoriedad las listas de estudiantes y temas 
-    randomizer(std_list)
-    randomizer(themes_list)
-
-'''
-buscar division de grupos 
-- conseguir en cuanto se puede dividir la lista y en remanente
-- 
-'''
+    #C:\Users\Emily\Desktop\Prueba\tht.txt
     
+    distribution(std_list, themes_list, group_number)
+
 
 
 
