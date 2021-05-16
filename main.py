@@ -15,9 +15,12 @@ def div_numbers(lst, num):
 def rem_numbers(lst, num):
     return len(lst) % num  
 
-def distribution(lst1, lst2):
-    print(lst)
-
+def distribution(std, theme):
+    std_div = div_numbers(std)
+    std_rem = rem_numbers(std)
+    theme_div = div_numbers(theme)
+    theme_rem = rem_numbers(theme)
+    
 
 if __name__ == '__main__':
     while True:
