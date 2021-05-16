@@ -1,7 +1,6 @@
 import random
 import time
 
-
 def read_file(path):
     lines = []
     try:
@@ -39,19 +38,16 @@ def distribution(std, theme, n):
             j +=1  
         cont.append([temp])
 
-    for i in cont:
-        print(i)
-    print("==============================================================")
-    '''
-    if theme_rem != 1: 
+    #Remanente temas 
+    if theme_rem != 0: 
         l = list(range(0,n))
         random.shuffle(l)
         for i in range(theme_rem):
             choice = random.choice(theme)
             theme.remove(choice)
             num = l.pop()
-            cont[num].append(choice)
-    '''
+            cont[num][0].append(choice)
+
     #dividir estudiantes 
     for i in range(n):
         for j in range(std_div):
@@ -60,12 +56,21 @@ def distribution(std, theme, n):
             std.remove(choice)
             temp.append(choice)
             j +=1  
-        cont[i].append([temp])
+        cont[i].append(temp) 
+ 
+    #Remanente estudiantes  
+    if std_rem != 0: 
+        l = list(range(0,n))
+        random.shuffle(l)
+        for i in range(std_rem):
+            choice = random.choice(std)
+            std.remove(choice)
+            num = l.pop()
+            cont[num][1].append(choice)
     
-    for i in cont:
-        print(i)
-    print("==============================================================")
-
+    return cont
+    
+    
 
 if __name__ == '__main__':
     while True:
@@ -82,7 +87,7 @@ if __name__ == '__main__':
         std_path = input("Inserte archivos de estudiantes: ") #Pedir path de archivo de estudiantes
         std_list = read_file(std_path) #Lista estudiantes 
 
-        themes_path = input("Inserte archivos de estudiantes: ") #Pedir path de archivo de temas   
+        themes_path = input("Inserte archivos de temas: ") #Pedir path de archivo de temas   
         themes_list = read_file(themes_path) #Lista temas
 
         if group_number <= len(std_list) and len(themes_list) >= group_number : #Si entradas no cuimplen con requerimientos 
@@ -91,11 +96,11 @@ if __name__ == '__main__':
             print("Parametro no valido")
             time.sleep(2.4)
             exit()
-
-    #C:\Users\Emily\Desktop\Prueba\pub.txt
-    #C:\Users\Emily\Desktop\Prueba\tht.txt
     
-    distribution(std_list, themes_list, group_number)
+    grupos = distribution(std_list, themes_list, group_number)
+
+    for i in grupos:
+        print("temas: " + ', '.join(i[0])  + " -----> estudiantes: " + ', '.join(i[1])  )
 
 #Puedo hacer que la distirbucion / funcion random pueda ser una funcion o sea , el loop 
 
