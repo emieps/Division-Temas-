@@ -1,4 +1,6 @@
 import random
+import time
+
 
 def read_file(path):
     lines = []
@@ -11,6 +13,7 @@ def read_file(path):
             return lines
     except IOError:
         print("No existe parametro")
+        time.sleep(2.4)
         exit()
 
 def div_numbers(lst, num):
@@ -72,6 +75,7 @@ if __name__ == '__main__':
             break
         except ValueError:
             print("Parametro no valido")
+            time.sleep(2.4)
             exit()
 
     while True:
@@ -85,6 +89,7 @@ if __name__ == '__main__':
             break
         else: 
             print("Parametro no valido")
+            time.sleep(2.4)
             exit()
 
     #C:\Users\Emily\Desktop\Prueba\pub.txt
