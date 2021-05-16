@@ -1,10 +1,17 @@
 import random
 
-def read_fie(path):
-    with open(path, "r") as f:
-        lines = f.readlines()
-        f.close()
-        return lines
+def read_file(path):
+    lines = []
+    try:
+        with open(path, "r") as f:
+            l = f.readlines()
+            for line in l: 
+                lines.append(line.rstrip("\n"))
+            f.close()
+            return lines
+    except IOError:
+        print("No existe parametro")
+        exit()
 
 def div_numbers(lst, num):
     return len(lst) // num  
@@ -19,7 +26,6 @@ def distribution(std, theme, n):
     theme_rem = rem_numbers(theme, n)
 
     cont = []
-
     #dividir temas 
     for i in range(n):
         for j in range(theme_div):
@@ -61,26 +67,32 @@ def distribution(std, theme, n):
 if __name__ == '__main__':
     while True:
         #poner try por si ponene un coso que no va y tambien si no ponene y poner un try si no exsite documento 
-        group_number = int(input("Cantidad de grupos: ")) #Pedir cantidad de grupos
+        try:
+            group_number = int(input("Cantidad de grupos: ")) #Pedir cantidad de grupos
+            break
+        except ValueError:
+            print("Parametro no valido")
+            exit()
 
+    while True:
         std_path = input("Inserte archivos de estudiantes: ") #Pedir path de archivo de estudiantes
-        std_list = read_fie(std_path) #Lista estudiantes 
+        std_list = read_file(std_path) #Lista estudiantes 
 
         themes_path = input("Inserte archivos de estudiantes: ") #Pedir path de archivo de temas   
-        themes_list = read_fie(themes_path) #Lista temas
+        themes_list = read_file(themes_path) #Lista temas
 
         if group_number <= len(std_list) and len(themes_list) >= group_number : #Si entradas no cuimplen con requerimientos 
             break
         else: 
             print("Parametro no valido")
-            des = input("Desea seguir si/no: ") #Preguntar si desea salir del programa 
-            if(des == 'no'):
-                exit()
+            exit()
 
     #C:\Users\Emily\Desktop\Prueba\pub.txt
     #C:\Users\Emily\Desktop\Prueba\tht.txt
     
     distribution(std_list, themes_list, group_number)
+
+#Puedo hacer que la distirbucion / funcion random pueda ser una funcion o sea , el loop 
 
 
 
