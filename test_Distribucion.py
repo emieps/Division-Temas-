@@ -15,7 +15,6 @@ import Distribucion as dis
    ]
 )
 
-
 def test_div(lst, div, expect):
     assert dis.div_numbers(lst, div) == expect
 
