@@ -8,7 +8,7 @@ import Distribucion as dis
       (["Lenore", "Candice", "Chanel", "Chet", "Leroi"], 5, 1),
       (["Lenore", "Candice", "Chanel", "Chet", "Leroi", "Robbie", "Annalise",  "Ashleigh", "Jaxx"], 3, 3),  
       (["Jameson", "Thelma", "Carla", "Emely", "Oz"], 2, 2), 
-      (["Deidre", "Tiffany", "Linzi", "Sheelagh", "Kaylani","Lawrence", "Dashiell", "Caitlin", "Guridi"], 4, 2), #cambiarlos 
+      (["Deidre", "Tiffany", "Linzi", "Sheelagh", "Kaylani","Lawrence", "Dashiell", "Caitlin", "Guridi"], 4, 2), 
       (["Lenore", "Candice", "Chanel", "Chet", "Leroi", "Robbie", "Annalise", "Ashleigh", "Jaxx", "Cherish", "Teodoro", "Marcus", "Dante"], 6, 2),
       (["Kylee", "Keaton", "Isaac", "Antonette", "Angus", "Leroi", "Robbie", "Annalise", "Ashleigh", "Jaxx", "Cherish", "Teodoro", "Marcus", "Dante"], 5, 2),
 
@@ -24,7 +24,7 @@ def test_div(lst, div, expect):
       (["Lenore", "Candice", "Chanel", "Chet", "Leroi"], 5, 0),
       (["Lenore", "Candice", "Chanel", "Chet", "Leroi", "Robbie", "Annalise",  "Ashleigh", "Jaxx"], 3, 0),  
       (["Jameson", "Thelma", "Carla", "Emely", "Oz"], 2, 1), 
-      (["Deidre", "Tiffany", "Linzi", "Sheelagh", "Kaylani","Lawrence", "Dashiell", "Caitlin", "Guridi"], 4, 1), #cambiarlos 
+      (["Deidre", "Tiffany", "Linzi", "Sheelagh", "Kaylani","Lawrence", "Dashiell", "Caitlin", "Guridi"], 4, 1),  
       (["Lenore", "Candice", "Chanel", "Chet", "Leroi", "Robbie", "Annalise", "Ashleigh", "Jaxx", "Cherish", "Teodoro", "Marcus", "Dante"], 6, 1),
       (["Kylee", "Keaton", "Isaac", "Antonette", "Angus", "Leroi", "Robbie", "Annalise", "Ashleigh", "Jaxx", "Cherish", "Teodoro", "Marcus", "Dante"], 5, 4),
 

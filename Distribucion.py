@@ -2,6 +2,12 @@ import random
 import time
 import sys
 
+def div_numbers(lst, num):
+    return len(lst) // num  
+
+def rem_numbers(lst, num):
+    return len(lst) % num  
+
 def read_file(path):
     lines = []
     try:
@@ -15,12 +21,6 @@ def read_file(path):
         print("No existe archivo")
         time.sleep(2.4)
         exit()
-
-def div_numbers(lst, num):
-    return len(lst) // num  
-
-def rem_numbers(lst, num):
-    return len(lst) % num  
 
 def distribution(std, theme, n):
     n = int(n)
@@ -70,41 +70,32 @@ def distribution(std, theme, n):
     return cont
 
 def num_ask(n):
-    while True:
-        try:
-            group_number = int(n) #Pedir cantidad de grupos
-            return group_number
-            break
-        except ValueError:
-            print("Parametro no valido")
-            time.sleep(2.4)
-            exit()
+    try:
+        group_number = int(n) #Pedir cantidad de grupos
+        return group_number
+    except ValueError:
+        print("No es un numero")
+        time.sleep(2.4)
+        exit()
 
-def req(std_list, themes_list, group_number):
-    if group_number <= len(std_list) and len(themes_list) >= group_number:
-        return True
-    return False
+def path_ask(std_path, themes_path, group_number):
+    std_list = read_file(std_path)    
+    themes_list = read_file(themes_path) 
 
-def path_ask(std_path, themes_path):
-    while True:
-        std_list = read_file(std_path)    
-        themes_list = read_file(themes_path) 
-
-        if req(std_list, themes_list, group_number): #Si entradas no cuimplen con requerimientos
-            return  std_list, themes_list
-            break
-        else: 
-            print("Parametro no valido")
-            time.sleep(2.4)
-            exit()
+    if group_number <= len(std_list) and len(themes_list) >= group_number:#Si entradas no cuimplen con requerimientos
+        return  std_list, themes_list
+    else: 
+        print("Parametro no valido")
+        time.sleep(2.4)
+        exit()
         
 
 if __name__ == '__main__':
-    group_number = int(sys.argv[1])
+    group_number = num_ask(sys.argv[1])
     std_path = sys.argv[2] #Pedir path de archivo de estudiantes
     themes_path = sys.argv[3] #Pedir path de archivo de temas 
     
-    std_list, themes_list = path_ask(std_path, themes_path)
+    std_list, themes_list = path_ask(std_path, themes_path, group_number)
 
     grupos = distribution(std_list, themes_list, group_number)
 
@@ -113,3 +104,4 @@ if __name__ == '__main__':
 
 
 
+ 
