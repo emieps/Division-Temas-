@@ -79,12 +79,17 @@ def num_ask(n):
             time.sleep(2.4)
             exit()
 
+def req(std_list, themes_list, group_number):
+    if group_number <= len(std_list) and len(themes_list) >= group_number:
+        return True
+    return False
+
 def path_ask(std_path, themes_path):
     while True:
         std_list = read_file(std_path)    
         themes_list = read_file(themes_path) 
 
-        if group_number <= len(std_list) and len(themes_list) >= group_number : #Si entradas no cuimplen con requerimientos
+        if req(std_list, themes_list, group_number): #Si entradas no cuimplen con requerimientos
             return  std_list, themes_list
             break
         else: 
