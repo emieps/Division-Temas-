@@ -30,13 +30,13 @@ def distribution(std, theme, n):
     cont = []
     #dividir temas 
     for i in range(n):
+        temp = []
         for j in range(theme_div):
-            temp = []
             choice = random.choice(theme)
             theme.remove(choice)
             temp.append(choice)
-            j +=1  
         cont.append([temp])
+
 
     #Remanente temas 
     if theme_rem != 0: 
@@ -50,12 +50,11 @@ def distribution(std, theme, n):
 
     #dividir estudiantes 
     for i in range(n):
+        temp = []
         for j in range(std_div):
-            temp = []
             choice = random.choice(std)
             std.remove(choice)
-            temp.append(choice)
-            j +=1  
+            temp.append(choice) 
         cont[i].append(temp) 
  
     #Remanente estudiantes  
