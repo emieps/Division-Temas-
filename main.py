@@ -67,43 +67,46 @@ def distribution(std, theme, n):
             std.remove(choice)
             num = l.pop()
             cont[num][1].append(choice)
-    
     return cont
-    
-    
 
-if __name__ == '__main__':
+def num_ask(n):
     while True:
-        #poner try por si ponene un coso que no va y tambien si no ponene y poner un try si no exsite documento 
         try:
-            group_number = int(input("Cantidad de grupos: ")) #Pedir cantidad de grupos
+            group_number = int(n) #Pedir cantidad de grupos
+            return group_number
             break
         except ValueError:
             print("Parametro no valido")
             time.sleep(2.4)
             exit()
 
+def path_ask(std_path, themes_path):
     while True:
-        std_path = input("Inserte archivos de estudiantes: ") #Pedir path de archivo de estudiantes
-        std_list = read_file(std_path) #Lista estudiantes 
+        std_list = read_file(std_path)    
+        themes_list = read_file(themes_path) 
 
-        themes_path = input("Inserte archivos de temas: ") #Pedir path de archivo de temas   
-        themes_list = read_file(themes_path) #Lista temas
-
-        if group_number <= len(std_list) and len(themes_list) >= group_number : #Si entradas no cuimplen con requerimientos 
+        if group_number <= len(std_list) and len(themes_list) >= group_number : #Si entradas no cuimplen con requerimientos
+            return  std_list, themes_list
             break
         else: 
             print("Parametro no valido")
             time.sleep(2.4)
             exit()
+        
+
+
+if __name__ == '__main__':
+    group_number = num_ask(input("Cantidad de grupos: "))
     
+    std_path = input("Inserte archivos de estudiantes: ") #Pedir path de archivo de estudiantes
+    themes_path = input("Inserte archivos de temas: ") #Pedir path de archivo de temas 
+    
+    std_list, themes_list = path_ask(std_path, themes_path)
+
     grupos = distribution(std_list, themes_list, group_number)
 
     for i in grupos:
         print("temas: " + ', '.join(i[0])  + " -----> estudiantes: " + ', '.join(i[1])  )
-
-#Puedo hacer que la distirbucion / funcion random pueda ser una funcion o sea , el loop 
-
 
 
 
