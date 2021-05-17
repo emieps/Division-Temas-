@@ -31,13 +31,25 @@ def test_div(lst, div, expect):
 
 def test_rem(lst, ren, expect):
     assert dis.rem_numbers(lst, ren) == expect
-   
+
+@pytest.mark.parametrize(
+   "num, expect",
+   [ 
+      ("5", 5),
+      ("4", 4), 
+      ("10", 10)
+   ]
+)
+
+def test_num_ask(num, expect):
+    assert dis.num_ask(num) == expect
+
+
 @pytest.mark.parametrize(
    "path, expected",
    [ 
       (r"C:\Users\Emily\Desktop\1.Tendencias\Prueba\std_1.txt", ["Lenore", "Candice", "Chanel", "Chet", "Leroi"]),
       (r"C:\Users\Emily\Desktop\1.Tendencias\Prueba\std_2.txt", ["Lenore", "Candice", "Chanel", "Chet", "Leroi", "Robbie", "Annalise", "Ashleigh", "Jaxx"]) 
-    
    ]
 )
 
@@ -45,14 +57,13 @@ def test_read_file(path, expected):
     assert dis.read_file(path) == expected
 
 @pytest.mark.parametrize(
-   "path",
+   "num, std_list, themes_list",
    [ 
-      (r"C:\Users\Emily\Desktop\1.Tendencias\Prueba\std_1"),
-      (r"C:\Users\Emily\Desktop\1.Tendencias\Prueba\std5")    
+      (5, ["Lenore", "Candice", "Chanel", "Chet", "Leroi"], ["Summer", "Pillars", "Honourable", "Bottle", "Cloudy"]),
+      (13, ["Lenore", "Candice", "Chanel", "Chet", "Leroi", "Robbie", "Annalise", "Ashleigh", "Jaxx", "Cherish", "Teodoro", "Marcus", "Dante"], 
+      ["Valuable", "Thistled", "Fragile", "Entwined", "Treasure", "Elves", "Rigid", "Spring", "Fairies", "Guardian", "Key", "Words", "Angelic"]) 
    ]
 )
-def test_read_file_exit(path):
-    with pytest.raises(SystemExit) as e:
-        dis.read_file(path) 
-   
-    assert e.type == SystemExit
+
+def test_req(num, std_list, themes_list):
+    assert dis.req(num, std_list, themes_list) == True

@@ -8,6 +8,15 @@ def div_numbers(lst, num):
 def rem_numbers(lst, num):
     return len(lst) % num  
 
+def num_ask(n):
+    try:
+        group_number = int(n) #Pedir cantidad de grupos
+        return group_number
+    except ValueError:
+        print("No es un numero")
+        time.sleep(2.4)
+        exit()
+
 def read_file(path):
     lines = []
     try:
@@ -21,6 +30,18 @@ def read_file(path):
         print("No existe archivo")
         time.sleep(2.4)
         exit()
+
+def req(group_number, std_list, themes_list):
+    if group_number <= len(std_list) and len(themes_list) >= group_number:
+        return True
+    else: 
+        print("Parametro no valido")
+        time.sleep(2.4)
+        exit()
+
+def path_ask(group_number, std_path, themes_path):
+
+        return  std_list, themes_list
 
 def distribution(std, theme, n):
     n = int(n)
@@ -69,38 +90,20 @@ def distribution(std, theme, n):
             cont[num][1].append(choice)
     return cont
 
-def num_ask(n):
-    try:
-        group_number = int(n) #Pedir cantidad de grupos
-        return group_number
-    except ValueError:
-        print("No es un numero")
-        time.sleep(2.4)
-        exit()
-
-def path_ask(std_path, themes_path, group_number):
-    std_list = read_file(std_path)    
-    themes_list = read_file(themes_path) 
-
-    if group_number <= len(std_list) and len(themes_list) >= group_number:#Si entradas no cuimplen con requerimientos
-        return  std_list, themes_list
-    else: 
-        print("Parametro no valido")
-        time.sleep(2.4)
-        exit()
         
 
 if __name__ == '__main__':
     group_number = num_ask(sys.argv[1])
     std_path = sys.argv[2] #Pedir path de archivo de estudiantes
     themes_path = sys.argv[3] #Pedir path de archivo de temas 
-    
-    std_list, themes_list = path_ask(std_path, themes_path, group_number)
 
-    grupos = distribution(std_list, themes_list, group_number)
+    std_list = read_file(std_path)    
+    themes_list = read_file(themes_path) 
 
-    for i in grupos:
-        print("temas: " + ', '.join(i[0])  + " -----> estudiantes: " + ', '.join(i[1])  )
+    if req(group_number, std_list, themes_list) == True:
+        grupos = distribution(std_list, themes_list, group_number)
+        for i in grupos:
+            print("temas: " + ', '.join(i[0])  + " -----> estudiantes: " + ', '.join(i[1])  )
 
 
 
