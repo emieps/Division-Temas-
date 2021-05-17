@@ -1,5 +1,6 @@
 import random
 import time
+import sys
 
 def read_file(path):
     lines = []
@@ -11,7 +12,7 @@ def read_file(path):
             f.close()
             return lines
     except IOError:
-        print("No existe parametro")
+        print("No existe archivo")
         time.sleep(2.4)
         exit()
 
@@ -22,6 +23,7 @@ def rem_numbers(lst, num):
     return len(lst) % num  
 
 def distribution(std, theme, n):
+    n = int(n)
     std_div = div_numbers(std, n)
     std_rem = rem_numbers(std, n)
     theme_div = div_numbers(theme, n)
@@ -36,7 +38,6 @@ def distribution(std, theme, n):
             theme.remove(choice)
             temp.append(choice)
         cont.append([temp])
-
 
     #Remanente temas 
     if theme_rem != 0: 
@@ -98,12 +99,10 @@ def path_ask(std_path, themes_path):
             exit()
         
 
-
 if __name__ == '__main__':
-    group_number = num_ask(input("Cantidad de grupos: "))
-    
-    std_path = input("Inserte archivos de estudiantes: ") #Pedir path de archivo de estudiantes
-    themes_path = input("Inserte archivos de temas: ") #Pedir path de archivo de temas 
+    group_number = int(sys.argv[1])
+    std_path = sys.argv[2] #Pedir path de archivo de estudiantes
+    themes_path = sys.argv[3] #Pedir path de archivo de temas 
     
     std_list, themes_list = path_ask(std_path, themes_path)
 
