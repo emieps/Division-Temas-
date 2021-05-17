@@ -23,12 +23,12 @@ def test_div():
 @pytest.mark.parametrize(
    "lst, div, expected",
    [ 
-      (["Lenore", "Candice", "Chanel", "Chet", "Leroi"], 5, 1)
-      (["Lenore", "Candice", "Chanel", "Chet", "Leroi", "Robbie", "Annalise",  "Ashleigh", "Jaxx"], 3, 3),  
-      (["Jameson", "Thelma", "Carla", "Emely", "Oz"], 2, 2), 
-      (["Deidre", "Tiffany", "Linzi", "Sheelagh", "Kaylani","Lawrence", "Dashiell", "Caitlin"], 8, 3 ), 
-      (["Lenore", "Candice", "Chanel", "Chet", "Leroi", "Robbie", "Annalise", "Ashleigh", "Jaxx", "Cherish", "Teodoro", "Marcus", "Dante"], 6, 2),
-      (["Kylee", "Keaton", "Isaac", "Antonette", "Angus", "Leroi", "Robbie", "Annalise", "Ashleigh", "Jaxx", "Cherish", "Teodoro", "Marcus", "Dante"], 5, 2),
+      (["Lenore", "Candice", "Chanel", "Chet", "Leroi"], 5, 1), #0
+      (["Lenore", "Candice", "Chanel", "Chet", "Leroi", "Robbie", "Annalise",  "Ashleigh", "Jaxx"], 3, 3), #0
+      (["Jameson", "Thelma", "Carla", "Emely", "Oz"], 2, 2), #1
+      (["Deidre", "Tiffany", "Linzi", "Sheelagh", "Kaylani","Lawrence", "Dashiell", "Caitlin"], 8, 3 ), #1
+      (["Lenore", "Candice", "Chanel", "Chet", "Leroi", "Robbie", "Annalise", "Ashleigh", "Jaxx", "Cherish", "Teodoro", "Marcus", "Dante"], 6, 2), #1
+      (["Kylee", "Keaton", "Isaac", "Antonette", "Angus", "Leroi", "Robbie", "Annalise", "Ashleigh", "Jaxx", "Cherish", "Teodoro", "Marcus", "Dante"], 5, 2), #0
 
    ]
 )
